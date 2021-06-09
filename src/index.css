@@ -25,9 +25,9 @@
   text-decoration: none;
   padding: 6px;
 }
-.navbar a:hover {
-  color: #f1356d;
-}
+/*.navbar a:hover {*/
+/*  color: #f1356d;*/
+/*}*/
 .content {
   max-width: 600px;
   margin: 40px auto;
@@ -61,4 +61,17 @@
 
 .blog-details div{
   margin: 20px 0;
+  text-align: justify;
+  text-indent: 50px;
+}
+.new-blog{
+  color: white;
+  background-color: #f1356d;
+  border: 1px solid #f1356d;
+  border-radius: 8px;
+}
+.new-blog:hover{
+  color: #f1356d;
+  background-color: white;
+  border: 1px solid #f1356d;
 }

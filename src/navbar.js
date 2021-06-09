@@ -7,7 +7,7 @@ const Navbar = (props) => {
             <h1>TO-DO Blog</h1>
             <div className={"links"}>
                 <Link to={"/"}>Home</Link>
-                <Link to={"/create"} /*style={{
+                <Link to={"/create"} className={"new-blog"} /*style={{
                     color:"white",
                     backgroundColor:"#f1356d",
                     borderRadius: "8px"
