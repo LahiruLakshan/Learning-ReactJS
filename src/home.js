@@ -1,28 +1,50 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import BlogList from "./blogList";
 
 const Home = (props) => {
-    const [blogs, setBBlogs] = useState([
-        {title: "My new Website", body: "lorem ipsum...", author: "lakshan", id: 1},
-        {title: "Welcome party!", body: "lorem ipsum...", author: "lahiru", id: 2},
-        {title: "Web dev top tip", body: "lorem ipsum...", author: "stark", id: 3}
-    ]);
+    const [blogs, setBlogs] = useState(null);
+    const [isPending, setIsPending] = useState(true)
+    const [error, setError] = useState(null)
+    const [name, setName]  = useState("lahiru")
+
     const handleClick = () => {
         console.log("hello, lahiru");
+        setName("Tissera");
+
     }
 
+    const handleDelete =(id) => {
+        const newBlogs = blogs.filter(blog => blog.id !== id);
+        setBlogs(newBlogs);
+    }
+
+    useEffect(() => {
+        setTimeout(() => {
+            fetch("http://localhost:8000/blogs")
+                .then(res =>{
+                    if (!res.ok){
+                        throw Error("Could not fetch the data for that resource")
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    setBlogs(data);
+                    setIsPending(false);
+                    setError(null);
+                })
+                .catch(err => {
+                    setIsPending(false)
+                    setError(err.message);
+            })
+        }, 1000)
+    },[])
 
     return (
         <div className={"home"}>
+            {error && <div>{error}</div>}
+            {isPending && <div>Loading...</div>}
+            {blogs && <BlogList blogs={blogs} title={"All Blogs"} handleDelete={handleDelete}/>}
 
-            {blogs.map((blog) => (
-                <div className={"blog-preview"} key={blog.id}>
-                    <h2>{blog.title}</h2>
-                    <p>Written by {blog.author}</p>
-                </div>
-            ))}
-
-            {/*<h2>Home Page</h2>*/}
-            {/*<button onClick={handleClick}>Click me</button>*/}
         </div>
     );
 }
