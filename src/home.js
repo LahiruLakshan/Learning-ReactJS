@@ -4,7 +4,7 @@ import UseFetch from "./useFetch";
 
 const Home = (props) => {
 
-    const {data: blogs, isPending, error} = UseFetch("http://localhost:8000/blogs");
+    const {data: blog, isPending, error} = UseFetch("http://localhost:8000/blogs");
     // const [name, setName]  = useState("lahiru");
 
     // const handleClick = () => {
@@ -21,7 +21,7 @@ const Home = (props) => {
         <div className={"home"}>
             {error && <div>{error}</div>}
             {isPending && <div>Loading...</div>}
-            {blogs && <BlogList blogs={blogs} title={"All Blogs"} /*handleDelete={handleDelete}*//>}
+            {blog && <BlogList blogs={blog} title={"All Blogs"} /*handleDelete={handleDelete}*//>}
 
         </div>
     );
