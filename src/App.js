@@ -22,7 +22,7 @@ function App() {
                         <Route path={"/blog/:id"}>
                             <BlogDetails/>
                         </Route>
-                        <Route path={""}>
+                        <Route path={"*"}>
                             <NotFound/>
                         </Route>
                     </Switch>
