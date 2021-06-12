@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 
 function Create(props) {
 
     const [title, setTitle] = useState();
     const [body, setBody] = useState();
     const [author, setAuthor] = useState("lahiru");
-    const [isPending, setIsPending] = useState(false)
+    const [isPending, setIsPending] = useState(false);
+    const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,6 +19,7 @@ function Create(props) {
             body: JSON.stringify(blog)
         }).then(() =>{
             setIsPending(false);
+            history.push("/")
         })
     }
 

@@ -64,6 +64,18 @@
   text-align: justify;
   text-indent: 50px;
 }
+.blog-details button{
+  background-color: #f1356d;
+  color: white;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+
+
 .new-blog{
   color: white;
   background-color: #f1356d;
